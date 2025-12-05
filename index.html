@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Exercice Calculatrice</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="./CSS/calculatrice.css" media="all"/>
+		<link rel="stylesheet" href="calculatrice.css" media="all"/>
+		<script>
+		// JS
+
+		function calcul(charact){
+            var expression = document.getElementById(`calc_resultat`).value;
+			var cal;
+			            
+            switch (charact){
+                case `CE`:
+                    document.getElementById(`calc_resultat`).value = "";
+                break;
+
+                case `=`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal;
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `back`:
+                    if (expression != ""){
+						expression = expression.substring(0, expression.length -1);
+						document.getElementById(`calc_resultat`).value = expression;
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+                
+                case `+`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal + "+";
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `-`:
+					if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal + "-";
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `x`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal + "*";
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `/`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal + `/`;
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+				
+				case `%`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal + "%";
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `,`:
+					if (expression != ""){
+						document.getElementById(`calc_resultat`).value += `.`;
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+
+                case `+-`:
+                    if (expression != ""){
+						cal = eval(expression);
+						document.getElementById(`calc_resultat`).value = cal * -1 ;
+					} else {
+						document.getElementById(`calc_resultat`).value = "";
+					}
+                break;
+					
+                default:
+                document.getElementById(`calc_resultat`).value += charact
+            }    
+        }
+		</script>
+		</head>
+	<body>
+		<header>
+			<img id='logo' src="../CCI-Formation-Colmar_Logo.gif" />
+			<h1>Exercice Calculatrice</h1>
+		</header>
+		<div id="main">
+			<h2>Enoncé</h2>
+			<div id="enonce">
+				<p>Faire fonctionner la calculatrice ci-dessous (Toutes les touches).</p>
+				<ul>
+					<li>Les touches remplissent la zone de texte (1 à 9 . % + - * /)</li>
+					<li>CE : efface la zone de texte</li>
+					<li><- : efface la dernière saisie</li>
+					<li>Calcul sur le = </li>
+				</ul>
+			</div>
+			<h2>Résultat</h2>
+			<table class="calculatrice" id="calc">
+				<tr>
+					<td colspan="4" class="calc_td_resultat">
+						<input type="text" readonly="readonly" name="calc_resultat" id="calc_resultat" class="calc_resultat"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="CE" onclick="calcul(`CE`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="&larr;" onclick="calcul(`back`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="%" onclick="calcul(`%`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="+" onclick="calcul(`+`)"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="1" onclick="calcul(`1`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="2" onclick="calcul(`2`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="3" onclick="calcul(`3`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="-" onclick="calcul(`-`)"/>
+					</td>
+				</tr>
+							<tr>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="4" onclick="calcul(`4`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="5" onclick="calcul(`5`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="6" onclick="calcul(`6`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="x" onclick="calcul(`x`)"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="7" onclick="calcul(`7`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="8" onclick="calcul(`8`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="9" onclick="calcul(`9`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="&divide;" onclick="calcul(`/`)"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="0" onclick="calcul(`0`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="&plusmn;" onclick="calcul(`+-`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="," onclick="calcul(`,`)"/>
+					</td>
+					<td class="calc_td_btn">
+							<input type="button" class="calc_btn" value="=" onclick="calcul(`=`)"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+
+</html>
